@@ -23,3 +23,5 @@ r_dir_file(rild, sysfs_socinfo)
 r_dir_file(rild, sysfs_subsys)
 
 allow rild mediaserver_service:service_manager find;
+
+allow rild system_health_monitor_device:chr_file r_file_perms;
