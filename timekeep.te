@@ -5,6 +5,8 @@ type timekeep_exec, exec_type, file_type;
 init_daemon_domain(timekeep)
 
 allow timekeep self:capability {
+    fowner
+    fsetid
     sys_time
     dac_override
     dac_read_search
