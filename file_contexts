@@ -9,6 +9,7 @@
 /dev/msm_dsps                                   u:object_r:sensors_device:s0
 /dev/msm_thermal_query                          u:object_r:thermal_device:s0
 /dev/qseecom                                    u:object_r:tee_device:s0
+/dev/radio0                                     u:object_r:fm_radio_device:s0
 /dev/rtc0                                       u:object_r:rtc_device:s0
 /dev/sensors                                    u:object_r:sensors_device:s0
 /dev/smd.*                                      u:object_r:smd_device:s0
@@ -63,11 +64,6 @@
 /dev/block/platform/msm_sdcc\.1/by-name/ssd                    u:object_r:ssd_device:s0
 /dev/block/bootdevice/by-name/ssd                              u:object_r:ssd_device:s0
 
-/dev/block/platform/soc\.0/7824900\.sdhci/by-name/misc         u:object_r:misc_partition:s0
-/dev/block/platform/soc\.0/f9824900\.sdhci/by-name/misc        u:object_r:misc_partition:s0
-/dev/block/platform/msm_sdcc\.1/by-name/misc                   u:object_r:misc_partition:s0
-/dev/block/bootdevice/by-name/misc                             u:object_r:misc_partition:s0
-
 /dev/block/mmcblk0p1                                           u:object_r:trim_area_partition_device:s0
 /dev/block/platform/soc\.0/7824900\.sdhci/by-name/TA           u:object_r:trim_area_partition_device:s0
 /dev/block/platform/soc\.0/f9824900\.sdhci/by-name/TA          u:object_r:trim_area_partition_device:s0
@@ -93,6 +89,14 @@
 /dev/block/platform/soc\.0/f9824900\.sdhci/by-name/cache       u:object_r:cache_block_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/cache                  u:object_r:cache_block_device:s0
 /dev/block/bootdevice/by-name/cache                            u:object_r:cache_block_device:s0
+
+/dev/block/platform/soc\.0/7824900\.sdhci/by-name/apps_log     u:object_r:misc_block_device:s0
+/dev/block/platform/soc\.0/f9824900\.sdhci/by-name/misc        u:object_r:misc_block_device:s0
+/dev/block/platform/msm_sdcc\.1/by-name/apps_log               u:object_r:misc_block_device:s0
+/dev/block/bootdevice/by-name/apps_log                         u:object_r:misc_block_device:s0
+/dev/block/bootdevice/by-name/misc                             u:object_r:misc_block_device:s0
+
+/dev/block/zram0                                               u:object_r:swap_block_device:s0
 
 ###################################
 # Dev socket nodes
@@ -161,21 +165,33 @@
 /sys/devices/soc0(/.*)?                                             u:object_r:sysfs_socinfo:s0
 
 # AD7146 Proximity
-/sys/devices/virtual/cap_sensor/ad7146/force_calib                  u:object_r:sysfs_force_calib:s0
-/sys/devices/virtual/cap_sensor/ad7146/obj_detect                   u:object_r:sysfs_obj_detect:s0
-/sys/devices/virtual/cap_sensor/ad7146/pad_set                      u:object_r:sysfs_pad_set:s0
-/sys/devices/virtual/cap_sensor/ad7146/pad_num                      u:object_r:sysfs_pad_num:s0
-/sys/devices/virtual/cap_sensor/ad7146/pad_data                     u:object_r:sysfs_pad_data:s0
-/sys/devices/virtual/cap_sensor/ad7146/pad_offset                   u:object_r:sysfs_pad_offset:s0
-/sys/devices/virtual/cap_sensor/ad7146/sw_updata                    u:object_r:sysfs_sw_updata:s0
-/sys/devices/virtual/switch/ad7146_1/state                          u:object_r:sysfs_sw_ad7146_1_state:s0
-/sys/devices/virtual/switch/ad7146_2/state                          u:object_r:sysfs_sw_ad7146_2_state:s0
+/sys/devices/virtual/cap_sensor/ad7146/force_calib                  u:object_r:sysfs_pad_controller:s0
+/sys/devices/virtual/cap_sensor/ad7146/obj_detect                   u:object_r:sysfs_pad_controller:s0
+/sys/devices/virtual/cap_sensor/ad7146/pad_set                      u:object_r:sysfs_pad_controller:s0
+/sys/devices/virtual/cap_sensor/ad7146/pad_num                      u:object_r:sysfs_pad_controller:s0
+/sys/devices/virtual/cap_sensor/ad7146/pad_data                     u:object_r:sysfs_pad_controller:s0
+/sys/devices/virtual/cap_sensor/ad7146/pad_offset                   u:object_r:sysfs_pad_controller:s0
+/sys/devices/virtual/cap_sensor/ad7146/sw_updata                    u:object_r:sysfs_pad_controller:s0
+/sys/devices/virtual/switch/ad7146_1/state                          u:object_r:sysfs_pad_controller:s0
+/sys/devices/virtual/switch/ad7146_2/state                          u:object_r:sysfs_pad_controller:s0
 
-# Fingerprint
-/sys/bus/spi/devices/spi0.1/clk_enable                              u:object_r:sysfs_fingerprintd_writable:s0
-/sys/bus/spi/devices/spi0.1/spi_prepare                             u:object_r:sysfs_fingerprintd_writable:s0
-/sys/bus/spi/devices/spi0.1/wakeup_enable                           u:object_r:sysfs_fingerprintd_writable:s0
-/sys/bus/spi/devices/spi0.1/irq                                     u:object_r:sysfs_fingerprintd_writable:s0
+# Fingerprint Kitakami
+/sys/bus/spi/devices/spi0\.1/clk_enable                                  u:object_r:sysfs_fingerprintd_writable:s0
+/sys/devices/soc\.0/f9923000\.spi/spi_master/spi0/spi0\.1/clk_enable    u:object_r:sysfs_fingerprintd_writable:s0
+/sys/bus/spi/devices/spi0\.1/spi_prepare                                 u:object_r:sysfs_fingerprintd_writable:s0
+/sys/devices/soc\.0/f9923000\.spi/spi_master/spi0/spi0\.1/spi_prepare   u:object_r:sysfs_fingerprintd_writable:s0
+/sys/bus/spi/devices/spi0\.1/wakeup_enable                               u:object_r:sysfs_fingerprintd_writable:s0
+/sys/devices/soc\.0/f9923000\.spi/spi_master/spi0/spi0\.1/wakeup_enable u:object_r:sysfs_fingerprintd_writable:s0
+/sys/bus/spi/devices/spi0\.1/irq                                         u:object_r:sysfs_fingerprintd_writable:s0
+/sys/devices/soc\.0/f9923000\.spi/spi_master/spi0/spi0\.1/irq           u:object_r:sysfs_fingerprintd_writable:s0
+
+# Fingerprint Loire
+/sys/devices(/soc\.0)?/fpc1145_device/spi_prepare                       u:object_r:sysfs_fingerprintd_writable:s0
+/sys/devices(/soc\.0)?/fpc1145\.105/spi_prepare                         u:object_r:sysfs_fingerprintd_writable:s0
+/sys/devices(/soc\.0)?/fpc1145_device/wakeup_enable                     u:object_r:sysfs_fingerprintd_writable:s0
+/sys/devices(/soc\.0)?/fpc1145\.105/wakeup_enable                       u:object_r:sysfs_fingerprintd_writable:s0
+/sys/devices(/soc\.0)?/fpc1145_device/irq                               u:object_r:sysfs_fingerprintd_writable:s0
+/sys/devices(/soc\.0)?/fpc1145\.105/irq                                 u:object_r:sysfs_fingerprintd_writable:s0
 
 # Modules
 /sys/module/cpu_boost(/.*)?                                         u:object_r:sysfs_devices_system_cpu:s0
