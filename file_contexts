@@ -199,7 +199,6 @@
 /sys/module/msm_performance(/.*)?                                   u:object_r:sysfs_performance:s0
 
 # Bluetooth
-/sys/devices/platform/bcmdhd_wlan/macaddr                           u:object_r:sysfs_addrsetup:s0
 /sys/devices(/soc\.0)?/bluesleep\.(81|89)/rfkill/rfkill0/state      u:object_r:sysfs_bluetooth_writable:s0
 
 # Storage
@@ -236,6 +235,8 @@
 
 # WiFi MAC address
 /sys/devices(/soc\.0)?/fb000000\.qcom,wcnss-wlan/wcnss_mac_addr                          u:object_r:sysfs_addrsetup:s0
+/sys/devices/platform/bcmdhd_wlan/macaddr                                                u:object_r:sysfs_addrsetup:s0
+/sys/devices(/soc\.0)?/bcmdhd_wlan.(90|114)/macaddr                                      u:object_r:sysfs_addrsetup:s0
 /sys/devices(/soc\.0)?/(fb21b000|a21b000)\.qcom,pronto/subsys2/name                      u:object_r:sysfs_pronto:s0
 
 ###################################
@@ -249,7 +250,6 @@
 /data/misc/radio(/.*)?                                              u:object_r:radio_data_file:s0
 /data/misc/fm(/.*)?                                                 u:object_r:fm_data_file:s0
 /data/audio/acdbdata(/.*)?                                          u:object_r:acdb_data_file:s0
-/data/etc(/.*)?                                                     u:object_r:addrsetup_data_file:s0
 /data/time(/.*)?                                                    u:object_r:timekeep_data_file:s0
 
 ###################################
