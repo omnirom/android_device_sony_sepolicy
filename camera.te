@@ -1,0 +1,2 @@
+# It is required due to common (Omni) implementation
+type camera, domain, domain_deprecated;
