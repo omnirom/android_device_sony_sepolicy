@@ -1,0 +1,8 @@
+# Started by init
+init_daemon_domain(ppd)
+
+allow ppd init:unix_stream_socket { connectto };
+allow ppd graphics_device:chr_file { read write open ioctl };
+allow ppd sysfs:file rw_file_perms;
+allow ppd system_prop:property_service { set };
+allow ppd property_socket:sock_file rw_file_perms;

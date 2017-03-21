@@ -40,3 +40,10 @@ define(`rw_dir_file', `
 allow $1 $2:dir rw_dir_perms;
 allow $1 $2:{ file lnk_file } rw_file_perms;
 ')
+
+#####################################
+# diag_use(clientdomain)
+# allow clientdomain to read/write to diag
+define(`diag_use', `
+allow $1 diag_device:chr_file rw_file_perms;
+')
