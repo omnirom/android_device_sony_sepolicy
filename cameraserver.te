@@ -4,3 +4,9 @@ allow cameraserver camera_data_file:sock_file write;
 
 allow cameraserver gpu_device:chr_file rw_file_perms;
 allow cameraserver rootfs:lnk_file getattr;
+
+# sonycam
+allow cameraserver sysfs:file rw_file_perms;
+allow cameraserver system_file:dir r_dir_perms;
+allow cameraserver system_server:unix_stream_socket read;
+allow cameraserver mm-qcamerad:unix_stream_socket { read connectto };

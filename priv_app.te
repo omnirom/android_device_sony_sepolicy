@@ -1,2 +1,5 @@
 allow priv_app vfat:dir rw_dir_perms;
 allow priv_app vfat:file create;
+
+# sonycam
+allow priv_app device:dir r_dir_perms;
