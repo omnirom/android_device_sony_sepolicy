@@ -10,3 +10,8 @@ allow mediaserver cameraserver_service:service_manager add;
 allow mediaserver cameraproxy_service:service_manager find;
 
 qmux_socket(mediaserver)
+
+# stock cam
+allow mediaserver system_server:unix_stream_socket read;
+allow mediaserver mm-qcamerad:unix_stream_socket connectto;
+allow mediaserver sysfs:file rw_file_perms;
