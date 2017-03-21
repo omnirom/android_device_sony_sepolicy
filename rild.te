@@ -24,3 +24,9 @@ allow rild system_health_monitor_device:chr_file r_file_perms;
 r_dir_file(rild, sysfs_socinfo)
 r_dir_file(rild, sysfs_subsys)
 
+allow rild tee_device:chr_file { read write open ioctl };
+allow rild idd_socket:dir { search };
+allow rild idd_socket:sock_file { write };
+allow rild idd:unix_dgram_socket { sendto };
+
+unix_socket_connect(rild, tad, tad)
