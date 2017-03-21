@@ -80,3 +80,29 @@ type sysfs_pad_controller, sysfs_type, fs_type;
 # BRCM BT FM
 type brcm_ldisc_sysfs, sysfs_type, fs_type;
 type brcm_uim_exec, exec_type, file_type;
+
+# sony cam
+# idd /rca
+type idd, domain, domain_deprecated;
+type idd_exec, exec_type, file_type;
+type idd_socket, file_type;
+type idd_file, file_type;
+type idd_data_file, file_type, data_file_type;
+type idd_lostfound_file, file_type;
+type misc_file, file_type;
+type misc_lostfound_file, file_type;
+
+# secd
+type secd, domain, domain_deprecated;
+type secd_exec, exec_type, file_type;
+type secd_socket, file_type;
+type secd_data_file, file_type, data_file_type;
+
+# cnd
+type cnd, domain, domain_deprecated;
+type cnd_exec, exec_type, file_type;
+
+# dpmd
+type dpmd, domain, domain_deprecated;
+type dpmd_exec, exec_type, file_type;
+type dpmd_data_file, file_type, data_file_type;
