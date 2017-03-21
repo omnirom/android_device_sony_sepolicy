@@ -52,3 +52,6 @@ r_dir_file(sensors, sysfs_pronto)
 r_dir_file(sensors, sysfs_socinfo)
 r_dir_file(sensors, sysfs_subsys)
 r_dir_file(sensors, system_file)
+
+# sonycam
+unix_socket_connect(sensors, tad, tad)
