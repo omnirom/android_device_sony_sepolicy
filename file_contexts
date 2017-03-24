@@ -46,71 +46,87 @@
 /dev/block/mmcblk0                                             u:object_r:root_block_device:s0
 /dev/block/mmcblk0rpmb                                         u:object_r:rpmb_device:s0
 
+/dev/block/platform/soc/7464900\.sdhci/by-name/modemst1        u:object_r:modem_efs_partition_device:s0
 /dev/block/platform/soc/7824900\.sdhci/by-name/modemst1        u:object_r:modem_efs_partition_device:s0
 /dev/block/platform/soc/f9824900\.sdhci/by-name/modemst1       u:object_r:modem_efs_partition_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/modemst1               u:object_r:modem_efs_partition_device:s0
 /dev/block/bootdevice/by-name/modemst1                         u:object_r:modem_efs_partition_device:s0
 
+/dev/block/platform/soc/7464900\.sdhci/by-name/modemst2        u:object_r:modem_efs_partition_device:s0
 /dev/block/platform/soc/7824900\.sdhci/by-name/modemst2        u:object_r:modem_efs_partition_device:s0
 /dev/block/platform/soc/f9824900\.sdhci/by-name/modemst2       u:object_r:modem_efs_partition_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/modemst2               u:object_r:modem_efs_partition_device:s0
 /dev/block/bootdevice/by-name/modemst2                         u:object_r:modem_efs_partition_device:s0
 
+/dev/block/platform/soc/7464900\.sdhci/by-name/fsg             u:object_r:modem_efs_partition_device:s0
 /dev/block/platform/soc/7824900\.sdhci/by-name/fsg             u:object_r:modem_efs_partition_device:s0
 /dev/block/platform/soc/f9824900\.sdhci/by-name/fsg            u:object_r:modem_efs_partition_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/fsg                    u:object_r:modem_efs_partition_device:s0
 /dev/block/bootdevice/by-name/fsg                              u:object_r:modem_efs_partition_device:s0
 
+/dev/block/platform/soc/7464900\.sdhci/by-name/ssd             u:object_r:ssd_device:s0
 /dev/block/platform/soc/7824900\.sdhci/by-name/ssd             u:object_r:ssd_device:s0
 /dev/block/platform/soc/f9824900\.sdhci/by-name/ssd            u:object_r:ssd_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/ssd                    u:object_r:ssd_device:s0
 /dev/block/bootdevice/by-name/ssd                              u:object_r:ssd_device:s0
 
 /dev/block/mmcblk0p1                                           u:object_r:trim_area_partition_device:s0
+/dev/block/platform/soc/7464900\.sdhci/by-name/TA              u:object_r:trim_area_partition_device:s0
 /dev/block/platform/soc/7824900\.sdhci/by-name/TA              u:object_r:trim_area_partition_device:s0
 /dev/block/platform/soc/f9824900\.sdhci/by-name/TA             u:object_r:trim_area_partition_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/TA                     u:object_r:trim_area_partition_device:s0
 /dev/block/bootdevice/by-name/TA                               u:object_r:trim_area_partition_device:s0
 
+/dev/block/platform/soc/7464900\.sdhci/by-name/userdata        u:object_r:userdata_block_device:s0
 /dev/block/platform/soc/7824900\.sdhci/by-name/userdata        u:object_r:userdata_block_device:s0
 /dev/block/platform/soc/f9824900\.sdhci/by-name/userdata       u:object_r:userdata_block_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/userdata               u:object_r:userdata_block_device:s0
 /dev/block/bootdevice/by-name/userdata                         u:object_r:userdata_block_device:s0
 
+/dev/block/platform/soc/7464900\.sdhci/by-name/boot            u:object_r:boot_block_device:s0
 /dev/block/platform/soc/7824900\.sdhci/by-name/boot            u:object_r:boot_block_device:s0
 /dev/block/platform/soc/f9824900\.sdhci/by-name/boot           u:object_r:boot_block_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/boot                   u:object_r:boot_block_device:s0
 /dev/block/bootdevice/by-name/boot                             u:object_r:boot_block_device:s0
 
+/dev/block/platform/soc/7464900\.sdhci/by-name/FOTAKernel      u:object_r:recovery_block_device:s0
 /dev/block/platform/soc/7824900\.sdhci/by-name/FOTAKernel      u:object_r:recovery_block_device:s0
 /dev/block/platform/soc/f9824900\.sdhci/by-name/FOTAKernel     u:object_r:recovery_block_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/FOTAKernel             u:object_r:recovery_block_device:s0
 /dev/block/bootdevice/by-name/FOTAKernel                       u:object_r:recovery_block_device:s0
 
+/dev/block/platform/soc/7464900\.sdhci/by-name/cache           u:object_r:cache_block_device:s0
 /dev/block/platform/soc/7824900\.sdhci/by-name/cache           u:object_r:cache_block_device:s0
 /dev/block/platform/soc/f9824900\.sdhci/by-name/cache          u:object_r:cache_block_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/cache                  u:object_r:cache_block_device:s0
 /dev/block/bootdevice/by-name/cache                            u:object_r:cache_block_device:s0
 
+/dev/block/platform/soc/7464900\.sdhci/by-name/apps_log        u:object_r:misc_block_device:s0
 /dev/block/platform/soc/7824900\.sdhci/by-name/apps_log        u:object_r:misc_block_device:s0
 /dev/block/platform/soc/f9824900\.sdhci/by-name/misc           u:object_r:misc_block_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/apps_log               u:object_r:misc_block_device:s0
 /dev/block/bootdevice/by-name/apps_log                         u:object_r:misc_block_device:s0
 /dev/block/bootdevice/by-name/misc                             u:object_r:misc_block_device:s0
 
+/dev/block/platform/soc/7464900\.sdhci/by-name/persist         u:object_r:persist_block_device:s0
+/dev/block/platform/soc/7824900\.sdhci/by-name/persist         u:object_r:persist_block_device:s0
+/dev/block/platform/soc/f9824900\.sdhci/by-name/persist        u:object_r:persist_block_device:s0
+
 /dev/block/zram0                                               u:object_r:swap_block_device:s0
 
 ###################################
 # Dev socket nodes
 #
+/dev/socket/msm_irqbalance                      u:object_r:msm_irqbalance_socket:s0
+/dev/socket/netmgr(/.*)?                        u:object_r:netmgrd_socket:s0
 /dev/socket/qmux_audio(/.*)?                    u:object_r:qmuxd_socket:s0
 /dev/socket/qmux_bluetooth(/.*)?                u:object_r:qmuxd_socket:s0
 /dev/socket/qmux_gps(/.*)?                      u:object_r:qmuxd_socket:s0
 /dev/socket/qmux_radio(/.*)?                    u:object_r:qmuxd_socket:s0
 /dev/socket/qmux_nfc(/.*)?                      u:object_r:qmuxd_socket:s0
-/dev/socket/netmgr(/.*)?                        u:object_r:netmgrd_socket:s0
+/dev/socket/rild2                               u:object_r:rild_socket:s0
+/dev/socket/rild-debug2                         u:object_r:rild_debug_socket:s0
 /dev/socket/sensor_ctl_socket                   u:object_r:sensors_socket:s0
-/dev/socket/msm_irqbalance                      u:object_r:msm_irqbalance_socket:s0
 /dev/socket/tad                                 u:object_r:tad_socket:s0
 
 ###################################
@@ -246,6 +262,9 @@
 /sys/devices/soc/bcmdhd_wlan.(90|114)/macaddr                                            u:object_r:sysfs_addrsetup:s0
 /sys/devices/soc/soc\:bcmdhd_wlan/macaddr                                                u:object_r:sysfs_addrsetup:s0
 /sys/devices/soc/(fb21b000|a21b000)\.qcom,pronto/subsys2/name                            u:object_r:sysfs_pronto:s0
+
+# Zram
+/sys/devices/virtual/block/zram0/mem_used_total                                          u:object_r:sysfs_zram:s0
 
 ###################################
 # data files
