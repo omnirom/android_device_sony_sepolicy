@@ -45,6 +45,7 @@
 /(system/vendor|vendor)/bin/thermanager        u:object_r:thermanager_exec:s0
 /(system/vendor|vendor)/bin/timekeep           u:object_r:timekeep_exec:s0
 /(system/vendor|vendor)/bin/odmcheck           u:object_r:odmcheck_exec:s0
+/(system/vendor|vendor)/bin/hw/android\.hardware\.drm@1\.0-service.widevine          u:object_r:hal_drm_widevine_exec:s0
 
 # files in /vendor
 /vendor/firmware(/.*)?                u:object_r:vendor_firmware_file:s0
