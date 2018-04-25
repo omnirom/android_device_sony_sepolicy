@@ -5,6 +5,7 @@
 /dev/rtc0                                       u:object_r:rtc_device:s0
 /dev/smd.*                                      u:object_r:smd_device:s0
 /dev/ttyHS0                                     u:object_r:serial_device:s0
+/dev/ttyHS1                                     u:object_r:serial_device:s0
 /dev/ttyMSM0                                    u:object_r:console_device:s0
 /dev/ipa                                        u:object_r:ipa_dev:s0
 /dev/wwan_ioctl                                 u:object_r:ipa_dev:s0
