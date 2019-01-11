@@ -1,3 +1,4 @@
+# Qualcomm odm (W)CNSS wlan/modem service
 type wcnss_service, domain;
 type wcnss_service_exec, exec_type, vendor_file_type, file_type;
 
@@ -24,12 +25,8 @@ allow wcnss_service self:netlink_socket create_socket_perms_no_ioctl;
 allow wcnss_service vendor_firmware_file:file { read open getattr };
 allow wcnss_service vendor_firmware_file:dir search;
 
-allow wcnss_service hostapd_data_file:dir rw_dir_perms;
-allow wcnss_service hostapd_data_file:file create_file_perms;
-allow wcnss_service wpa_data_file:dir rw_dir_perms;
-allow wcnss_service wpa_data_file:file create_file_perms;
-
 r_dir_file(wcnss_service, sysfs_msm_subsys)
+r_dir_file(wcnss_service, wifi_vendor_data_file)
 
 allow wcnss_service sysfs_soc:dir search;
 allow wcnss_service sysfs_soc:file r_file_perms;
