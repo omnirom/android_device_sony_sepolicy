@@ -20,3 +20,6 @@ vendor.usb.config          u:object_r:vendor_usb_config_prop:s0
 persist.vendor.usb.config  u:object_r:vendor_usb_config_prop:s0
 vendor.qcom.devup          u:object_r:vendor_device_prop:s0
 ro.vendor.bt.              u:object_r:vendor_bluetooth_prop:s0
+# HACK: neversleep prop
+vendor.neversleep.         u:object_r:vendor_neversleep_prop:s0
+persist.vendor.neversleep  u:object_r:vendor_neversleep_prop:s0

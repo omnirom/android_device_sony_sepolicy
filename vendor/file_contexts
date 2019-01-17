@@ -203,3 +203,6 @@
 /mnt/vendor/persist/rfs(/.*)?        u:object_r:persist_rfs_file:s0
 /mnt/vendor/persist/sensors(/.*)?    u:object_r:persist_sensors_file:s0
 /mnt/vendor/persist/time(/.*)?       u:object_r:persist_time_file:s0
+
+# HACK: neversleep.sh: Little helper script to set default neversleep option at boot
+/(system/vendor|vendor)/bin/neversleep\.sh         u:object_r:neversleep_exec:s0
