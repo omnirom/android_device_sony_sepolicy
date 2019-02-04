@@ -42,6 +42,7 @@
 /dev/socket/powerhal(/.*)?                      u:object_r:powerhal_socket:s0
 /dev/socket/tad                                 u:object_r:tad_socket:s0
 /dev/socket/cashsvr(/.*)?                       u:object_r:cashsvr_socket:s0
+/dev/socket/ucommsvr(/.*)?                      u:object_r:ucommsvr_socket:s0
 /dev/socket/ipacm_log_file                      u:object_r:ipacm_socket:s0
 
 # files in /odm
@@ -96,28 +97,19 @@
 /(system/vendor|vendor)/bin/hw/android\.hardware\.drm@1\.0-service.widevine                  u:object_r:hal_drm_widevine_exec:s0
 
 # sysfs paths
+# Input device control nodes, mainly for CASH to control power
+/sys/devices/virtual/input/input[0-9]+/chip_id                                               u:object_r:sysfs_input_control:s0
+/sys/devices/virtual/input/input[0-9]+/chip_pow                                              u:object_r:sysfs_input_control:s0
+# Input device names, mainly for CASH to enumerate
+/sys/devices/virtual/input/input[0-9]+/name                                                  u:object_r:sysfs_input_name:s0
 # ToF sensor for CASH
 /sys/devices/virtual/input/input[0-9]+/enable_ps_sensor                                      u:object_r:sysfs_tof_sensor:s0
 /sys/devices/virtual/input/input[0-9]+/set_use_case                                          u:object_r:sysfs_tof_sensor:s0
+/sys/devices/virtual/input/input[0-9]+/set_ref_spads                                         u:object_r:sysfs_tof_sensor:s0
+/sys/devices/virtual/input/input[0-9]+/set_um_offset                                         u:object_r:sysfs_tof_sensor:s0
 # RGBCIR sensor for CASH
-/sys/devices/virtual/input/input[0-9]+/als_Itime                                             u:object_r:sysfs_rgbc_sensor:s0
-/sys/devices/virtual/input/input[0-9]+/als_all                                               u:object_r:sysfs_rgbc_sensor:s0
-/sys/devices/virtual/input/input[0-9]+/als_auto_gain                                         u:object_r:sysfs_rgbc_sensor:s0
-/sys/devices/virtual/input/input[0-9]+/als_blue                                              u:object_r:sysfs_rgbc_sensor:s0
-/sys/devices/virtual/input/input[0-9]+/als_channel                                           u:object_r:sysfs_rgbc_sensor:s0
-/sys/devices/virtual/input/input[0-9]+/als_clear                                             u:object_r:sysfs_rgbc_sensor:s0
-/sys/devices/virtual/input/input[0-9]+/als_gain                                              u:object_r:sysfs_rgbc_sensor:s0
-/sys/devices/virtual/input/input[0-9]+/als_green                                             u:object_r:sysfs_rgbc_sensor:s0
-/sys/devices/virtual/input/input[0-9]+/als_persist                                           u:object_r:sysfs_rgbc_sensor:s0
-/sys/devices/virtual/input/input[0-9]+/als_power_state                                       u:object_r:sysfs_rgbc_sensor:s0
-/sys/devices/virtual/input/input[0-9]+/als_red                                               u:object_r:sysfs_rgbc_sensor:s0
-/sys/devices/virtual/input/input[0-9]+/als_thres                                             u:object_r:sysfs_rgbc_sensor:s0
-/sys/devices/virtual/input/input[0-9]+/als_thresh_deltaP                                     u:object_r:sysfs_rgbc_sensor:s0
-/sys/devices/virtual/input/input[0-9]+/chip_id                                               u:object_r:sysfs_rgbc_sensor:s0
-/sys/devices/virtual/input/input[0-9]+/chip_pow                                              u:object_r:sysfs_rgbc_sensor:s0
-# Input device names, mainly for CASH to enumerate
-/sys/devices/virtual/input/input[0-9]+/name                                                  u:object_r:sysfs_input_name:s0
-# RTC
+/sys/devices/virtual/input/input[0-9]+/als_(.*)+                                             u:object_r:sysfs_rgbc_sensor:s0
+# Real-time-clock
 /sys/class/rtc(/.*)?                                                                         u:object_r:sysfs_rtc:s0
 
 ###############################################
@@ -133,6 +125,7 @@
 
 /(system/vendor|vendor|odm)/lib(64)?/hw/vulkan\.msm89(52|96|98)\.so   u:object_r:same_process_hal_file:s0
 /(system/vendor|vendor|odm)/lib(64)?/hw/vulkan\.sdm(660|845)\.so      u:object_r:same_process_hal_file:s0
+/(system/vendor|vendor|odm)/lib(64)?/hw/vulkan\.qcom\.so              u:object_r:same_process_hal_file:s0
 /(system/vendor|vendor|odm)/lib(64)?/(egl/)?libEGL_adreno\.so         u:object_r:same_process_hal_file:s0
 /(system/vendor|vendor|odm)/lib(64)?/(egl/)?libGLESv1_CM_adreno\.so   u:object_r:same_process_hal_file:s0
 /(system/vendor|vendor|odm)/lib(64)?/(egl/)?libGLESv2_adreno\.so      u:object_r:same_process_hal_file:s0
@@ -169,16 +162,17 @@
 /(system/vendor|vendor|odm)/lib(64)?/libaptXHD_encoder\.so            u:object_r:same_process_hal_file:s0
 
 # data files
-/data/vendor/radio(/.*)?               u:object_r:radio_vendor_data_file:s0
-/data/vendor/sensors(/.*)?             u:object_r:sensors_vendor_data_file:s0
-/data/vendor/netmgr(/.*)?              u:object_r:netmgr_vendor_data_file:s0
-/data/vendor/nfc(/.*)?                 u:object_r:nfc_vendor_data_file:s0
-/data/vendor/time(/.*)?                u:object_r:timekeep_vendor_data_file:s0
-/data/vendor/location(/.*)?            u:object_r:location_vendor_data_file:s0
-/data/vendor/bluetooth(/.*)?           u:object_r:bluetooth_vendor_data_file:s0
 /data/vendor/audio(/.*)?               u:object_r:audio_vendor_data_file:s0
+/data/vendor/bluetooth(/.*)?           u:object_r:bluetooth_vendor_data_file:s0
+/data/vendor/cashsvr(/.*)?             u:object_r:cashsvr_vendor_data_file:s0
 /data/vendor/camera(/.*)?              u:object_r:camera_vendor_data_file:s0
 /data/vendor/ipa(/.*)?                 u:object_r:ipa_vendor_data_file:s0
+/data/vendor/location(/.*)?            u:object_r:location_vendor_data_file:s0
+/data/vendor/netmgr(/.*)?              u:object_r:netmgr_vendor_data_file:s0
+/data/vendor/nfc(/.*)?                 u:object_r:nfc_vendor_data_file:s0
+/data/vendor/radio(/.*)?               u:object_r:radio_vendor_data_file:s0
+/data/vendor/sensors(/.*)?             u:object_r:sensors_vendor_data_file:s0
+/data/vendor/time(/.*)?                u:object_r:timekeep_vendor_data_file:s0
 /data/vendor/wifi(/.*)?                u:object_r:wifi_vendor_data_file:s0
 
 # TODO: Remove them once no need to maintain the backward compatibility. (b/111219177)
