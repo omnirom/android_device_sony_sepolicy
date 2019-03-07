@@ -8,12 +8,18 @@ unix_socket_connect(addrsetup, tad, tad)
 allow addrsetup bluetooth_vendor_data_file:dir rw_dir_perms;
 allow addrsetup bluetooth_vendor_data_file:file create_file_perms;
 
+allow addrsetup wifi_vendor_data_file:dir rw_dir_perms;
+allow addrsetup wifi_vendor_data_file:file create_file_perms;
+
 allow addrsetup hostapd_data_file:dir rw_dir_perms;
 allow addrsetup hostapd_data_file:file create_file_perms;
+
 allow addrsetup wpa_data_file:dir rw_dir_perms;
 allow addrsetup wpa_data_file:file create_file_perms;
 
 allow addrsetup sysfs_addrsetup:file rw_file_perms;
 
 allow addrsetup self:capability { net_admin net_raw };
-allow addrsetup self:udp_socket create;
+allow addrsetup self:udp_socket { create ioctl };
+# If compiled with BRCFMAC:
+allowxperm addrsetup self:udp_socket ioctl SIOCSIFHWADDR;
